@@ -84,5 +84,9 @@ write, read, malloc, free, exit
 $ git clone https://github.com/RIshimoto/push_swap
 $ cd push_swap
 $ make all
-$ ./push_swap 2 1 3 6 5 8
+$ ./push_swap "2 1 3 6 5 8”
 ```
+
+## デモ
+https://user-images.githubusercontent.com/57135683/213191249-c802d00a-ec0b-4bd3-9fd0-e651bf031dd8.mp4
+
