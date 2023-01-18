@@ -49,9 +49,9 @@ int main(int argc, char **argv)
 	t_stacks *tmp, *min;
 	int i;
 	t_stacks *(*sorts[])(t_stacks *) = {
-		q_learning,
+		//q_learning,
 		//radix_sort,
-		//a_sort,
+		a_sort,
 		//insert_sort,
 		//brute_force_search,
 		NULL

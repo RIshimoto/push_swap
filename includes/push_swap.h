@@ -43,7 +43,7 @@ t_list	*data_align(char **arg);
 t_stacks *a_sort(t_stacks *stks);
 t_stacks *radix_sort(t_stacks *stks);
 t_stacks *insert_sort(t_stacks *stks);
-t_stacks *q_learning(t_stacks *stks);
+//t_stacks *q_learning(t_stacks *stks);
 void	error(void);
 
 // to debug
