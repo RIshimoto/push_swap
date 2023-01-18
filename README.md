@@ -16,7 +16,7 @@ a | 2 1 3 6 5 8
 b |
 ```
 
-### 終了条件
+### 終了状態
 - スタックa : 数字を昇順に並べ替えること。
 - スタックb : 空
 
@@ -27,7 +27,7 @@ b |
 ```
 
 ### 目標
-なるべく少ない操作数で終了条件を満たす。
+なるべく少ない操作数で終了状態に遷移させる。
 
 ### 操作
 スタックに対して以下の操作が許されている。
@@ -84,5 +84,5 @@ write, read, malloc, free, exit
 $ git clone https://github.com/RIshimoto/push_swap
 $ cd push_swap
 $ make all
-$ ./push_swap
+$ ./push_swap 2 1 3 6 5 8
 ```
