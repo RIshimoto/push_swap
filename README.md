@@ -84,7 +84,7 @@ $ cd push_swap
 $ virtualenv -p python3.7 .venv
 $ source .venv/bin/activate
 (.venv)$ pip install -r requirements.txt
-(.venv)$ run
+(.venv)$ build
 ```
 
 ### 

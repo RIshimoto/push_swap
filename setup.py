@@ -8,7 +8,7 @@ setup(
     install_requires=[],
     entry_points="""
         [console_scripts]
-        run = push_swap:main
+        build = push_swap:main
         clean = push_swap:clean
         fclean = push_swap:fclean
     """,
