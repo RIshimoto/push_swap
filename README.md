@@ -85,6 +85,7 @@ $ git clone https://github.com/RIshimoto/push_swap
 $ cd push_swap
 $ virtualenv push_swap
 $ source venv/bin/activate
+(push_swap)$ pip install -r requirements.txt
 (push_swap)$ cd sim
 (push_swap)$ make
 (push_swap)$ ./push_swap "2 1 3 6 5 8”
