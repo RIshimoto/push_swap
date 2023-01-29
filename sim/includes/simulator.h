@@ -28,7 +28,11 @@ typedef struct s_state
 	struct s_state *hash_link;
 }				t_state;
 
-t_stacks *copy(t_stacks *src);
+t_stacks *stks_init();
+t_stacks *stks_copy(t_stacks *stks);
+void	 stks_push(t_stacks *stks, t_list *lst);
+void	 stks_print(t_stacks *stks);
+void	 stks_free(t_stacks **stks);
 t_stacks *sa(t_stacks *stks);
 t_stacks *sb(t_stacks *stks);
 t_stacks *pa(t_stacks *stks);
@@ -38,7 +42,8 @@ t_stacks *rb(t_stacks *stks);
 t_stacks *rra(t_stacks *stks);
 t_stacks *rrb(t_stacks *stks);
 void	read_instructions(t_stacks **stks);
-t_list	*data_align(char **arg);
+void	exec_instruction(char *instruction, t_stacks **stks);
+t_list	*shape_data(char **arg);
 
 t_stacks *a_sort(t_stacks *stks);
 t_stacks *radix_sort(t_stacks *stks);
@@ -47,7 +52,12 @@ t_stacks *insert_sort(t_stacks *stks);
 void	error(void);
 
 // to debug
+void print(void *content);
 void debug_stk_print(t_stacks *stks);
 void debug_ins_print(t_stacks *stks);
+
+
+// checker.c
+bool checker(t_stacks *stks);
 
 #endif

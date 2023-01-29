@@ -1,4 +1,4 @@
-#include "../includes/push_swap.h"
+#include "../../includes/simulator.h"
 
 static int		hash(t_stacks *stks)
 {
@@ -132,7 +132,7 @@ static t_stacks *search_smart_instructions(t_stacks *src, t_stacks *target)
 		cnt++;
 		if (is_equal(mement, target))
 		{
-	printf("Search success: %d\n", cnt);
+			printf("Search success: %d\n", cnt);
 			return mement;
 		}
 		last = ft_dlstlast(mement->instructions);
@@ -154,7 +154,6 @@ static t_stacks *search_smart_instructions(t_stacks *src, t_stacks *target)
 	}
 	printf("Search failure: %d\n", cnt);
 	return target;
-	//ft_lstclear(&queue_top, free);
 }
 
 static t_stacks *sort(t_stacks *stks)

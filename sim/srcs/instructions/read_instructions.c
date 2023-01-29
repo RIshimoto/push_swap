@@ -1,6 +1,6 @@
-#include "../../includes/push_swap.h"
+#include "../../includes/simulator.h"
 
-static void exec_instruction(char *instruction, t_stacks **stks)
+void exec_instruction(char *instruction, t_stacks **stks)
 {
 	if (ft_strcmp(instruction, "sa") == EQUAL)
 		*stks = sa(*stks);
@@ -43,15 +43,13 @@ void read_instructions(t_stacks **stks)
 	int gnl;
 
 	//animation(a, b);
-	stk_print("a|", (*stks)->stk_a);
-	stk_print("b|", (*stks)->stk_b);
+	stks_print(*stks);
 	//ft_putstr_fd("Exec: ", 1);
 	while ((gnl = get_next_line(0, &line)) > 0)
 	{
 		exec_instruction(line, stks);
 		free(line);
-		stk_print("a|", (*stks)->stk_a);
-		stk_print("b|", (*stks)->stk_b);
+        stks_print(*stks);
 		//animation(a, b);
 		//ft_putstr_fd("Exec: ", 1);
 	}

@@ -1,41 +1,4 @@
-#include "../../includes/push_swap.h"
-
-t_stacks *copy(t_stacks *src)
-{
-	t_stacks	*new;
-	t_list		*lst;
-	t_dlist		*dlst;
-
-	new = malloc(sizeof(t_stacks));
-	stk_init(&new->stk_a);
-	stk_init(&new->stk_b);
-	new->instructions = ft_dlstnew(NULL);
-
-	lst = src->stk_a->next;
-	while (lst != NULL)
-	{
-		ft_lstadd_back(&new->stk_a, ft_lstnew(lst->content));
-		lst = lst->next;
-	}
-	
-	lst = src->stk_b->next;
-	while (lst != NULL)
-	{
-		ft_lstadd_back(&new->stk_b, ft_lstnew(lst->content));
-		lst = lst->next;
-	}
-
-	dlst = src->instructions->next;
-	while (dlst != NULL)
-	{
-		char *s = ft_strdup((char*)dlst->content);
-		ft_dlstadd_back(&new->instructions, ft_dlstnew(s));
-		dlst = dlst->next;
-	}
-
-	new->instruction_num = src->instruction_num;
-	return new;
-}
+#include "../../includes/simulator.h"
 
 t_stacks *sa(t_stacks *src)
 {
@@ -43,8 +6,8 @@ t_stacks *sa(t_stacks *src)
 	int x;
 	int y;
 
-	dest = copy(src);
-	if (stk_size(dest->stk_a) == 1 || stk_is_empty(dest->stk_a))
+	dest = stks_copy(src);
+	if (stk_size(dest->stk_a) == 1 || is_stk_empty(dest->stk_a))
 		return dest;
 	x = stk_top(dest->stk_a);
 	stk_pop(dest->stk_a);
@@ -73,8 +36,8 @@ t_stacks *sb(t_stacks *src)
 	int x;
 	int y;
 
-	dest = copy(src);
-	if (stk_size(dest->stk_b) == 1 || stk_is_empty(dest->stk_b))
+	dest = stks_copy(src);
+	if (stk_size(dest->stk_b) == 1 || is_stk_empty(dest->stk_b))
 		return dest;
 	x = stk_top(dest->stk_b);
 	stk_pop(dest->stk_b);
@@ -101,8 +64,8 @@ t_stacks *pa(t_stacks *src)
 {
 	t_stacks *dest;
 
-	dest = copy(src);
-	if (stk_is_empty(dest->stk_b))
+	dest = stks_copy(src);
+	if (is_stk_empty(dest->stk_b))
 		return dest;
 	stk_push(dest->stk_a, stk_top(dest->stk_b));
 	stk_pop(dest->stk_b);
@@ -128,8 +91,8 @@ t_stacks *pb(t_stacks *src)
 {
 	t_stacks *dest;
 
-	dest = copy(src);
-	if (stk_is_empty(dest->stk_a))
+	dest = stks_copy(src);
+	if (is_stk_empty(dest->stk_a))
 		return dest;
 	stk_push(dest->stk_b, stk_top(dest->stk_a));
 	stk_pop(dest->stk_a);
@@ -156,8 +119,8 @@ t_stacks *ra(t_stacks *src)
 	t_list *lst;
 	t_stacks *dest;
 
-	dest = copy(src);
-	if (stk_is_empty(dest->stk_a))
+	dest = stks_copy(src);
+	if (is_stk_empty(dest->stk_a))
 		return dest;
 	lst = dest->stk_a->next;
 	dest->stk_a->next = lst->next;
@@ -183,8 +146,8 @@ t_stacks *rb(t_stacks *src)
 	t_list *lst;
 	t_stacks *dest;
 
-	dest = copy(src);
-	if (stk_is_empty(dest->stk_b))
+	dest = stks_copy(src);
+	if (is_stk_empty(dest->stk_b))
 		return dest;
 	lst = dest->stk_b->next;
 	dest->stk_b->next = lst->next;
@@ -212,8 +175,8 @@ t_stacks *rra(t_stacks *src)
 	t_list *tmp;
 	t_stacks *dest;
 
-	dest = copy(src);
-	if (stk_size(dest->stk_a) == 1 || stk_is_empty(dest->stk_a))
+	dest = stks_copy(src);
+	if (stk_size(dest->stk_a) == 1 || is_stk_empty(dest->stk_a))
 		return dest;
 	lst = dest->stk_a;
 	while (lst->next->next != NULL)
@@ -243,8 +206,8 @@ t_stacks *rrb(t_stacks *src)
 	t_list *tmp;
 	t_stacks *dest;
 
-	dest = copy(src);
-	if (stk_size(dest->stk_b) == 1 || stk_is_empty(dest->stk_b))
+	dest = stks_copy(src);
+	if (stk_size(dest->stk_b) == 1 || is_stk_empty(dest->stk_b))
 		return dest;
 	lst = dest->stk_b;
 	while (lst->next->next != NULL)

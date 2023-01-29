@@ -8,7 +8,8 @@ SRCS = \
 	top.c\
 	size.c\
 	is_empty.c\
-	print.c
+	print.c\
+	free.c
 OBJS = $(SRCS:.c=.o)
 
 all: $(NAME)
