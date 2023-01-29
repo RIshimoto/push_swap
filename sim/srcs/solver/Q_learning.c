@@ -1,16 +1,11 @@
-#include "../includes/push_swap.h"
-
-typedef struct	s_agent
-{
-
-}				t_agent;
+#include "../../includes/simulator.h"
 
 static bool is_sorted(t_stacks *stks)
 {
 	t_list *lst;
 	int a, b;
 	
-	if (!stk_is_empty(stks->stk_b))
+	if (!is_stk_empty(stks->stk_b))
 		return false;
 	lst = stks->stk_a->next;
 	while (lst->next != NULL)

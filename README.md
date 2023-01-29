@@ -83,8 +83,11 @@ write, read, malloc, free, exit
 ```
 $ git clone https://github.com/RIshimoto/push_swap
 $ cd push_swap
-$ make all
-$ ./push_swap "2 1 3 6 5 8”
+$ virtualenv push_swap
+$ source venv/bin/activate
+(push_swap)$ cd sim
+(push_swap)$ make
+(push_swap)$ ./push_swap "2 1 3 6 5 8”
 ```
 
 ## デモ

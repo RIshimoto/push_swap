@@ -1,4 +1,4 @@
-#include "../../includes/push_swap.h"
+#include "../../includes/simulator.h"
 
 /*
 static void print(void *content)
@@ -71,7 +71,7 @@ t_list *check_argument(char *arg)
 	return lst;
 }
 
-t_list *data_align(char **arg)
+t_list *shape_data(char **arg)
 {
 	int i;
 	t_list *lst;

@@ -1,6 +1,6 @@
-#include "../includes/push_swap.h"
+#include "../../includes/simulator.h"
 
-static void print(void *content)
+void print(void *content)
 {
 	if (content != NULL)
 		printf("%s\n", (char *)content);

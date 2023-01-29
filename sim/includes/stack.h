@@ -12,8 +12,9 @@ void	stk_push(t_stack this, int value);
 int		stk_pop(t_stack this);
 int		stk_top(t_stack this);
 int		stk_size(t_stack this);
-bool	stk_is_empty(t_stack this);
+bool	is_stk_empty(t_stack this);
 void	stk_print(char *s, t_stack this);
+void    stk_free(t_stack *this);
 void	animation(t_stack a, t_stack b);
 
 #endif

@@ -1,11 +1,11 @@
-#include "../includes/push_swap.h"
+#include "../../includes/simulator.h"
 
 static bool is_sorted(t_stacks *stks)
 {
 	t_list *lst;
 	int a, b;
 	
-	if (!stk_is_empty(stks->stk_b))
+	if (!is_stk_empty(stks->stk_b))
 		return false;
 	lst = stks->stk_a->next;
 	while (lst->next != NULL)
@@ -26,7 +26,7 @@ static t_stacks *sort(t_stacks *stks, unsigned int bits)
 	int stkb_size;
 	t_stacks *sort_stks;
 
-	sort_stks = copy(stks);
+	sort_stks = stks_copy(stks);
 	stkb_size = stk_size(stks->stk_b);
 	i = -1;
 	while (++i < stkb_size)
@@ -277,7 +277,7 @@ static t_stacks *search_smart_instructions(t_stacks *src, t_stacks *target)
 	//ft_lstclear(&queue_top, free);
 }
 
-t_stacks *brute_force_search(t_stacks *stks)
+t_stacks *insert_sort(t_stacks *stks)
 {
 	unsigned int bits;
 	t_stacks *next_stks;
