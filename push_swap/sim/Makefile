@@ -52,7 +52,7 @@ fclean: clean
 	$(MAKE) fclean -C ./srcs/stack
 	$(MAKE) fclean -C ./srcs/queue
 	rm -rf $(NAME)
-	rm -rf push_swap.so
+	rm -rf simulator.cpython-37m-x86_64-linux-gnu.so
 	rm -rf build
 
 re: fclean all

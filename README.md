@@ -80,15 +80,24 @@ b |
 write, read, malloc, free, exit
 
 ## 実行
+### 
 ```
 $ git clone https://github.com/RIshimoto/push_swap
 $ cd push_swap
-$ virtualenv push_swap
-$ source venv/bin/activate
-(push_swap)$ pip install -r requirements.txt
-(push_swap)$ cd sim
-(push_swap)$ make
-(push_swap)$ ./push_swap "2 1 3 6 5 8”
+$ virtualenv -p python3.7 .venv
+$ source .venv/bin/activate
+(.venv)$ pip install -r requirements.txt
+(.venv)$ start
+```
+
+### 
+```
+(.venv)$ python srcipt/train.py
+```
+
+### 
+```
+(.venv)$ ./push_swap "2 1 3 6 5 8”
 ```
 
 ## デモ

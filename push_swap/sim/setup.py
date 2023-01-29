@@ -1,7 +1,7 @@
 from distutils.core import setup, Extension
 from Cython.Build import cythonize
 
-ext = Extension("push_swap", 
+ext = Extension("simulator", 
                 sources=["./srcs/simulator.pyx",
                         # libft
                         "./srcs/libft/ft_lstnew.c",
@@ -47,6 +47,6 @@ ext = Extension("push_swap",
                         ])
 
 setup(
-    name="push_swap", 
+    name="simulator", 
     ext_modules=cythonize(ext)
 )
