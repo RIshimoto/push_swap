@@ -1,2 +1,3 @@
-*/__pycache__/
-push_swap.egg_info/
+push_swap/sim/__pycache__
+push_swap/__pycache__
+push_swap.egg-info

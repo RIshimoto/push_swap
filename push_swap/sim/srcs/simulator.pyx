@@ -61,14 +61,17 @@ cdef class PushSwap:
         self._state = State()
         self._state.setup(_list2stks(self.args))
 
-    cpdef step(self, char *action):
+    cpdef step(self, action):
         cdef:
             State state
             int is_done
             double reward
+            char *_action
 
-        self._state.step(action)
+        action = action.encode('UTF-8')
+        _action = action
+        self._state.step(_action)
         state = self._state.clone()
         is_done = self._state.is_done()
-        reward = 1.0 if is_done else 0.0
+        reward = 0.0 if is_done else -1.0
         return (state, reward, is_done)

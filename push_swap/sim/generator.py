@@ -11,7 +11,7 @@ class Generator:
         random.shuffle(data)
         return data
 
-    def __next__(self):
+    def __call__(self):
         generated_data = self._generate_data()
         return PushSwap(generated_data)
 
