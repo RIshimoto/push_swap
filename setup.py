@@ -8,6 +8,7 @@ setup(
     install_requires=[
         "cython",
         "numpy",
+        "torch",
     ],
     entry_points="""
         [console_scripts]

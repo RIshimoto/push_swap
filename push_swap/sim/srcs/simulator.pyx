@@ -1,3 +1,4 @@
+import torch
 cimport simulator as sim
 
 cdef sim.t_stacks* _list2stks(list args):
@@ -60,6 +61,7 @@ cdef class PushSwap:
         self._state.free()
         self._state = State()
         self._state.setup(_list2stks(self.args))
+        return self._state
 
     cpdef step(self, action):
         cdef:

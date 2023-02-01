@@ -1021,7 +1021,7 @@ static const char *__pyx_f[] = {
 struct __pyx_obj_9simulator_State;
 struct __pyx_obj_9simulator_PushSwap;
 
-/* "simulator.pyx":13
+/* "simulator.pyx":14
  *     return stks
  * 
  * cdef class State:             # <<<<<<<<<<<<<<
@@ -1035,7 +1035,7 @@ struct __pyx_obj_9simulator_State {
 };
 
 
-/* "simulator.pyx":45
+/* "simulator.pyx":46
  *         return state
  * 
  * cdef class PushSwap:             # <<<<<<<<<<<<<<
@@ -1051,7 +1051,7 @@ struct __pyx_obj_9simulator_PushSwap {
 
 
 
-/* "simulator.pyx":13
+/* "simulator.pyx":14
  *     return stks
  * 
  * cdef class State:             # <<<<<<<<<<<<<<
@@ -1069,7 +1069,7 @@ struct __pyx_vtabstruct_9simulator_State {
 static struct __pyx_vtabstruct_9simulator_State *__pyx_vtabptr_9simulator_State;
 
 
-/* "simulator.pyx":45
+/* "simulator.pyx":46
  *         return state
  * 
  * cdef class PushSwap:             # <<<<<<<<<<<<<<
@@ -1374,6 +1374,9 @@ static CYTHON_INLINE PyObject* __Pyx_PyObject_GetAttrStrNoError(PyObject* obj, P
 /* SetupReduce.proto */
 static int __Pyx_setup_reduce(PyObject* type_obj);
 
+/* Import.proto */
+static PyObject *__Pyx_Import(PyObject *name, PyObject *from_list, int level);
+
 /* CLineInTraceback.proto */
 #ifdef CYTHON_CLINE_IN_TRACEBACK
 #define __Pyx_CLineForTraceback(tstate, c_line)  (((CYTHON_CLINE_IN_TRACEBACK)) ? c_line : 0)
@@ -1464,7 +1467,9 @@ static const char __pyx_k_test[] = "__test__";
 static const char __pyx_k_State[] = "State";
 static const char __pyx_k_UTF_8[] = "UTF-8";
 static const char __pyx_k_reset[] = "reset";
+static const char __pyx_k_torch[] = "torch";
 static const char __pyx_k_encode[] = "encode";
+static const char __pyx_k_import[] = "__import__";
 static const char __pyx_k_reduce[] = "__reduce__";
 static const char __pyx_k_PushSwap[] = "PushSwap";
 static const char __pyx_k_getstate[] = "__getstate__";
@@ -1487,6 +1492,7 @@ static PyObject *__pyx_n_s_args;
 static PyObject *__pyx_n_s_cline_in_traceback;
 static PyObject *__pyx_n_s_encode;
 static PyObject *__pyx_n_s_getstate;
+static PyObject *__pyx_n_s_import;
 static PyObject *__pyx_n_s_main;
 static PyObject *__pyx_n_s_name;
 static PyObject *__pyx_kp_s_no_default___reduce___due_to_non;
@@ -1499,6 +1505,7 @@ static PyObject *__pyx_n_s_setstate;
 static PyObject *__pyx_n_s_setstate_cython;
 static PyObject *__pyx_n_s_step;
 static PyObject *__pyx_n_s_test;
+static PyObject *__pyx_n_s_torch;
 static int __pyx_pf_9simulator_5State___cinit__(CYTHON_UNUSED struct __pyx_obj_9simulator_State *__pyx_v_self); /* proto */
 static void __pyx_pf_9simulator_5State_2__dealloc__(CYTHON_UNUSED struct __pyx_obj_9simulator_State *__pyx_v_self); /* proto */
 static PyObject *__pyx_pf_9simulator_5State_4__str__(struct __pyx_obj_9simulator_State *__pyx_v_self); /* proto */
@@ -1520,7 +1527,7 @@ static PyObject *__pyx_tuple__5;
 static PyObject *__pyx_tuple__6;
 /* Late includes */
 
-/* "simulator.pyx":3
+/* "simulator.pyx":4
  * cimport simulator as sim
  * 
  * cdef sim.t_stacks* _list2stks(list args):             # <<<<<<<<<<<<<<
@@ -1543,7 +1550,7 @@ static t_stacks *__pyx_f_9simulator__list2stks(PyObject *__pyx_v_args) {
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("_list2stks", 0);
 
-  /* "simulator.pyx":6
+  /* "simulator.pyx":7
  *     cdef sim.t_stacks *stks
  * 
  *     stks = sim.stks_init()             # <<<<<<<<<<<<<<
@@ -1552,7 +1559,7 @@ static t_stacks *__pyx_f_9simulator__list2stks(PyObject *__pyx_v_args) {
  */
   __pyx_v_stks = stks_init();
 
-  /* "simulator.pyx":7
+  /* "simulator.pyx":8
  * 
  *     stks = sim.stks_init()
  *     if stks == NULL:             # <<<<<<<<<<<<<<
@@ -1562,16 +1569,16 @@ static t_stacks *__pyx_f_9simulator__list2stks(PyObject *__pyx_v_args) {
   __pyx_t_1 = ((__pyx_v_stks == NULL) != 0);
   if (unlikely(__pyx_t_1)) {
 
-    /* "simulator.pyx":8
+    /* "simulator.pyx":9
  *     stks = sim.stks_init()
  *     if stks == NULL:
  *         raise MemoryError()             # <<<<<<<<<<<<<<
  *     for num in args[::-1]:
  *         sim.stk_push(stks.stk_a, num)
  */
-    PyErr_NoMemory(); __PYX_ERR(0, 8, __pyx_L1_error)
+    PyErr_NoMemory(); __PYX_ERR(0, 9, __pyx_L1_error)
 
-    /* "simulator.pyx":7
+    /* "simulator.pyx":8
  * 
  *     stks = sim.stks_init()
  *     if stks == NULL:             # <<<<<<<<<<<<<<
@@ -1580,39 +1587,39 @@ static t_stacks *__pyx_f_9simulator__list2stks(PyObject *__pyx_v_args) {
  */
   }
 
-  /* "simulator.pyx":9
+  /* "simulator.pyx":10
  *     if stks == NULL:
  *         raise MemoryError()
  *     for num in args[::-1]:             # <<<<<<<<<<<<<<
  *         sim.stk_push(stks.stk_a, num)
  *     return stks
  */
-  __pyx_t_2 = __Pyx_PyObject_GetItem(__pyx_v_args, __pyx_slice_); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 9, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetItem(__pyx_v_args, __pyx_slice_); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 10, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_t_3 = __pyx_t_2; __Pyx_INCREF(__pyx_t_3); __pyx_t_4 = 0;
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   for (;;) {
     if (__pyx_t_4 >= PyList_GET_SIZE(__pyx_t_3)) break;
     #if CYTHON_ASSUME_SAFE_MACROS && !CYTHON_AVOID_BORROWED_REFS
-    __pyx_t_2 = PyList_GET_ITEM(__pyx_t_3, __pyx_t_4); __Pyx_INCREF(__pyx_t_2); __pyx_t_4++; if (unlikely(0 < 0)) __PYX_ERR(0, 9, __pyx_L1_error)
+    __pyx_t_2 = PyList_GET_ITEM(__pyx_t_3, __pyx_t_4); __Pyx_INCREF(__pyx_t_2); __pyx_t_4++; if (unlikely(0 < 0)) __PYX_ERR(0, 10, __pyx_L1_error)
     #else
-    __pyx_t_2 = PySequence_ITEM(__pyx_t_3, __pyx_t_4); __pyx_t_4++; if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 9, __pyx_L1_error)
+    __pyx_t_2 = PySequence_ITEM(__pyx_t_3, __pyx_t_4); __pyx_t_4++; if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 10, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     #endif
     __Pyx_XDECREF_SET(__pyx_v_num, __pyx_t_2);
     __pyx_t_2 = 0;
 
-    /* "simulator.pyx":10
+    /* "simulator.pyx":11
  *         raise MemoryError()
  *     for num in args[::-1]:
  *         sim.stk_push(stks.stk_a, num)             # <<<<<<<<<<<<<<
  *     return stks
  * 
  */
-    __pyx_t_5 = __Pyx_PyInt_As_int(__pyx_v_num); if (unlikely((__pyx_t_5 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 10, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_PyInt_As_int(__pyx_v_num); if (unlikely((__pyx_t_5 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 11, __pyx_L1_error)
     stk_push(__pyx_v_stks->stk_a, __pyx_t_5);
 
-    /* "simulator.pyx":9
+    /* "simulator.pyx":10
  *     if stks == NULL:
  *         raise MemoryError()
  *     for num in args[::-1]:             # <<<<<<<<<<<<<<
@@ -1622,7 +1629,7 @@ static t_stacks *__pyx_f_9simulator__list2stks(PyObject *__pyx_v_args) {
   }
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "simulator.pyx":11
+  /* "simulator.pyx":12
  *     for num in args[::-1]:
  *         sim.stk_push(stks.stk_a, num)
  *     return stks             # <<<<<<<<<<<<<<
@@ -1632,7 +1639,7 @@ static t_stacks *__pyx_f_9simulator__list2stks(PyObject *__pyx_v_args) {
   __pyx_r = __pyx_v_stks;
   goto __pyx_L0;
 
-  /* "simulator.pyx":3
+  /* "simulator.pyx":4
  * cimport simulator as sim
  * 
  * cdef sim.t_stacks* _list2stks(list args):             # <<<<<<<<<<<<<<
@@ -1652,7 +1659,7 @@ static t_stacks *__pyx_f_9simulator__list2stks(PyObject *__pyx_v_args) {
   return __pyx_r;
 }
 
-/* "simulator.pyx":16
+/* "simulator.pyx":17
  *     cdef sim.t_stacks *_stks
  * 
  *     def __cinit__(self):             # <<<<<<<<<<<<<<
@@ -1687,7 +1694,7 @@ static int __pyx_pf_9simulator_5State___cinit__(CYTHON_UNUSED struct __pyx_obj_9
   return __pyx_r;
 }
 
-/* "simulator.pyx":19
+/* "simulator.pyx":20
  *         pass
  * 
  *     def __dealloc__(self):             # <<<<<<<<<<<<<<
@@ -1714,7 +1721,7 @@ static void __pyx_pf_9simulator_5State_2__dealloc__(CYTHON_UNUSED struct __pyx_o
   __Pyx_RefNannyFinishContext();
 }
 
-/* "simulator.pyx":22
+/* "simulator.pyx":23
  *         pass
  * 
  *     def __str__(self):             # <<<<<<<<<<<<<<
@@ -1740,7 +1747,7 @@ static PyObject *__pyx_pf_9simulator_5State_4__str__(struct __pyx_obj_9simulator
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__str__", 0);
 
-  /* "simulator.pyx":23
+  /* "simulator.pyx":24
  * 
  *     def __str__(self):
  *         sim.stks_print(self._stks)             # <<<<<<<<<<<<<<
@@ -1749,7 +1756,7 @@ static PyObject *__pyx_pf_9simulator_5State_4__str__(struct __pyx_obj_9simulator
  */
   stks_print(__pyx_v_self->_stks);
 
-  /* "simulator.pyx":24
+  /* "simulator.pyx":25
  *     def __str__(self):
  *         sim.stks_print(self._stks)
  *         return ""             # <<<<<<<<<<<<<<
@@ -1761,7 +1768,7 @@ static PyObject *__pyx_pf_9simulator_5State_4__str__(struct __pyx_obj_9simulator
   __pyx_r = __pyx_kp_s__2;
   goto __pyx_L0;
 
-  /* "simulator.pyx":22
+  /* "simulator.pyx":23
  *         pass
  * 
  *     def __str__(self):             # <<<<<<<<<<<<<<
@@ -1776,7 +1783,7 @@ static PyObject *__pyx_pf_9simulator_5State_4__str__(struct __pyx_obj_9simulator
   return __pyx_r;
 }
 
-/* "simulator.pyx":26
+/* "simulator.pyx":27
  *         return ""
  * 
  *     cdef setup(self, sim.t_stacks *stks):             # <<<<<<<<<<<<<<
@@ -1789,7 +1796,7 @@ static PyObject *__pyx_f_9simulator_5State_setup(struct __pyx_obj_9simulator_Sta
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("setup", 0);
 
-  /* "simulator.pyx":27
+  /* "simulator.pyx":28
  * 
  *     cdef setup(self, sim.t_stacks *stks):
  *         self._stks = stks             # <<<<<<<<<<<<<<
@@ -1798,7 +1805,7 @@ static PyObject *__pyx_f_9simulator_5State_setup(struct __pyx_obj_9simulator_Sta
  */
   __pyx_v_self->_stks = __pyx_v_stks;
 
-  /* "simulator.pyx":26
+  /* "simulator.pyx":27
  *         return ""
  * 
  *     cdef setup(self, sim.t_stacks *stks):             # <<<<<<<<<<<<<<
@@ -1813,7 +1820,7 @@ static PyObject *__pyx_f_9simulator_5State_setup(struct __pyx_obj_9simulator_Sta
   return __pyx_r;
 }
 
-/* "simulator.pyx":29
+/* "simulator.pyx":30
  *         self._stks = stks
  * 
  *     cdef step(self, char *action):             # <<<<<<<<<<<<<<
@@ -1826,7 +1833,7 @@ static PyObject *__pyx_f_9simulator_5State_step(struct __pyx_obj_9simulator_Stat
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("step", 0);
 
-  /* "simulator.pyx":30
+  /* "simulator.pyx":31
  * 
  *     cdef step(self, char *action):
  *         sim.exec_instruction(action, &self._stks);             # <<<<<<<<<<<<<<
@@ -1835,7 +1842,7 @@ static PyObject *__pyx_f_9simulator_5State_step(struct __pyx_obj_9simulator_Stat
  */
   exec_instruction(__pyx_v_action, (&__pyx_v_self->_stks));
 
-  /* "simulator.pyx":29
+  /* "simulator.pyx":30
  *         self._stks = stks
  * 
  *     cdef step(self, char *action):             # <<<<<<<<<<<<<<
@@ -1850,7 +1857,7 @@ static PyObject *__pyx_f_9simulator_5State_step(struct __pyx_obj_9simulator_Stat
   return __pyx_r;
 }
 
-/* "simulator.pyx":32
+/* "simulator.pyx":33
  *         sim.exec_instruction(action, &self._stks);
  * 
  *     cdef free(self):             # <<<<<<<<<<<<<<
@@ -1863,7 +1870,7 @@ static PyObject *__pyx_f_9simulator_5State_free(struct __pyx_obj_9simulator_Stat
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("free", 0);
 
-  /* "simulator.pyx":33
+  /* "simulator.pyx":34
  * 
  *     cdef free(self):
  *         sim.stks_free(&self._stks)             # <<<<<<<<<<<<<<
@@ -1872,7 +1879,7 @@ static PyObject *__pyx_f_9simulator_5State_free(struct __pyx_obj_9simulator_Stat
  */
   stks_free((&__pyx_v_self->_stks));
 
-  /* "simulator.pyx":32
+  /* "simulator.pyx":33
  *         sim.exec_instruction(action, &self._stks);
  * 
  *     cdef free(self):             # <<<<<<<<<<<<<<
@@ -1887,7 +1894,7 @@ static PyObject *__pyx_f_9simulator_5State_free(struct __pyx_obj_9simulator_Stat
   return __pyx_r;
 }
 
-/* "simulator.pyx":35
+/* "simulator.pyx":36
  *         sim.stks_free(&self._stks)
  * 
  *     cdef is_done(self):             # <<<<<<<<<<<<<<
@@ -1904,7 +1911,7 @@ static PyObject *__pyx_f_9simulator_5State_is_done(struct __pyx_obj_9simulator_S
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("is_done", 0);
 
-  /* "simulator.pyx":36
+  /* "simulator.pyx":37
  * 
  *     cdef is_done(self):
  *         return sim.checker(self._stks)             # <<<<<<<<<<<<<<
@@ -1912,13 +1919,13 @@ static PyObject *__pyx_f_9simulator_5State_is_done(struct __pyx_obj_9simulator_S
  *     cdef clone(self):
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_PyInt_From_int(checker(__pyx_v_self->_stks)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 36, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyInt_From_int(checker(__pyx_v_self->_stks)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 37, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "simulator.pyx":35
+  /* "simulator.pyx":36
  *         sim.stks_free(&self._stks)
  * 
  *     cdef is_done(self):             # <<<<<<<<<<<<<<
@@ -1937,7 +1944,7 @@ static PyObject *__pyx_f_9simulator_5State_is_done(struct __pyx_obj_9simulator_S
   return __pyx_r;
 }
 
-/* "simulator.pyx":38
+/* "simulator.pyx":39
  *         return sim.checker(self._stks)
  * 
  *     cdef clone(self):             # <<<<<<<<<<<<<<
@@ -1955,30 +1962,30 @@ static PyObject *__pyx_f_9simulator_5State_clone(struct __pyx_obj_9simulator_Sta
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("clone", 0);
 
-  /* "simulator.pyx":41
+  /* "simulator.pyx":42
  *         cdef State state
  * 
  *         state = State()             # <<<<<<<<<<<<<<
  *         state.setup(sim.stks_copy(self._stks))
  *         return state
  */
-  __pyx_t_1 = __Pyx_PyObject_CallNoArg(((PyObject *)__pyx_ptype_9simulator_State)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 41, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_CallNoArg(((PyObject *)__pyx_ptype_9simulator_State)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 42, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_v_state = ((struct __pyx_obj_9simulator_State *)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "simulator.pyx":42
+  /* "simulator.pyx":43
  * 
  *         state = State()
  *         state.setup(sim.stks_copy(self._stks))             # <<<<<<<<<<<<<<
  *         return state
  * 
  */
-  __pyx_t_1 = ((struct __pyx_vtabstruct_9simulator_State *)__pyx_v_state->__pyx_vtab)->setup(__pyx_v_state, stks_copy(__pyx_v_self->_stks)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 42, __pyx_L1_error)
+  __pyx_t_1 = ((struct __pyx_vtabstruct_9simulator_State *)__pyx_v_state->__pyx_vtab)->setup(__pyx_v_state, stks_copy(__pyx_v_self->_stks)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 43, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "simulator.pyx":43
+  /* "simulator.pyx":44
  *         state = State()
  *         state.setup(sim.stks_copy(self._stks))
  *         return state             # <<<<<<<<<<<<<<
@@ -1990,7 +1997,7 @@ static PyObject *__pyx_f_9simulator_5State_clone(struct __pyx_obj_9simulator_Sta
   __pyx_r = ((PyObject *)__pyx_v_state);
   goto __pyx_L0;
 
-  /* "simulator.pyx":38
+  /* "simulator.pyx":39
  *         return sim.checker(self._stks)
  * 
  *     cdef clone(self):             # <<<<<<<<<<<<<<
@@ -2123,7 +2130,7 @@ static PyObject *__pyx_pf_9simulator_5State_8__setstate_cython__(CYTHON_UNUSED s
   return __pyx_r;
 }
 
-/* "simulator.pyx":50
+/* "simulator.pyx":51
  *         list args
  * 
  *     def __cinit__(self, list args):             # <<<<<<<<<<<<<<
@@ -2160,7 +2167,7 @@ static int __pyx_pw_9simulator_8PushSwap_1__cinit__(PyObject *__pyx_v_self, PyOb
         else goto __pyx_L5_argtuple_error;
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "__cinit__") < 0)) __PYX_ERR(0, 50, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "__cinit__") < 0)) __PYX_ERR(0, 51, __pyx_L3_error)
       }
     } else if (PyTuple_GET_SIZE(__pyx_args) != 1) {
       goto __pyx_L5_argtuple_error;
@@ -2171,13 +2178,13 @@ static int __pyx_pw_9simulator_8PushSwap_1__cinit__(PyObject *__pyx_v_self, PyOb
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("__cinit__", 1, 1, 1, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 50, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("__cinit__", 1, 1, 1, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 51, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("simulator.PushSwap.__cinit__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return -1;
   __pyx_L4_argument_unpacking_done:;
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_args), (&PyList_Type), 1, "args", 1))) __PYX_ERR(0, 50, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_args), (&PyList_Type), 1, "args", 1))) __PYX_ERR(0, 51, __pyx_L1_error)
   __pyx_r = __pyx_pf_9simulator_8PushSwap___cinit__(((struct __pyx_obj_9simulator_PushSwap *)__pyx_v_self), __pyx_v_args);
 
   /* function exit code */
@@ -2201,7 +2208,7 @@ static int __pyx_pf_9simulator_8PushSwap___cinit__(struct __pyx_obj_9simulator_P
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__cinit__", 0);
 
-  /* "simulator.pyx":51
+  /* "simulator.pyx":52
  * 
  *     def __cinit__(self, list args):
  *         assert len(set(args)) == len(args)             # <<<<<<<<<<<<<<
@@ -2210,23 +2217,23 @@ static int __pyx_pf_9simulator_8PushSwap___cinit__(struct __pyx_obj_9simulator_P
  */
   #ifndef CYTHON_WITHOUT_ASSERTIONS
   if (unlikely(!Py_OptimizeFlag)) {
-    __pyx_t_1 = PySet_New(__pyx_v_args); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 51, __pyx_L1_error)
+    __pyx_t_1 = PySet_New(__pyx_v_args); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 52, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_2 = PySet_GET_SIZE(__pyx_t_1); if (unlikely(__pyx_t_2 == ((Py_ssize_t)-1))) __PYX_ERR(0, 51, __pyx_L1_error)
+    __pyx_t_2 = PySet_GET_SIZE(__pyx_t_1); if (unlikely(__pyx_t_2 == ((Py_ssize_t)-1))) __PYX_ERR(0, 52, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     if (unlikely(__pyx_v_args == Py_None)) {
       PyErr_SetString(PyExc_TypeError, "object of type 'NoneType' has no len()");
-      __PYX_ERR(0, 51, __pyx_L1_error)
+      __PYX_ERR(0, 52, __pyx_L1_error)
     }
-    __pyx_t_3 = PyList_GET_SIZE(__pyx_v_args); if (unlikely(__pyx_t_3 == ((Py_ssize_t)-1))) __PYX_ERR(0, 51, __pyx_L1_error)
+    __pyx_t_3 = PyList_GET_SIZE(__pyx_v_args); if (unlikely(__pyx_t_3 == ((Py_ssize_t)-1))) __PYX_ERR(0, 52, __pyx_L1_error)
     if (unlikely(!((__pyx_t_2 == __pyx_t_3) != 0))) {
       PyErr_SetNone(PyExc_AssertionError);
-      __PYX_ERR(0, 51, __pyx_L1_error)
+      __PYX_ERR(0, 52, __pyx_L1_error)
     }
   }
   #endif
 
-  /* "simulator.pyx":52
+  /* "simulator.pyx":53
  *     def __cinit__(self, list args):
  *         assert len(set(args)) == len(args)
  *         self.args = args             # <<<<<<<<<<<<<<
@@ -2239,14 +2246,14 @@ static int __pyx_pf_9simulator_8PushSwap___cinit__(struct __pyx_obj_9simulator_P
   __Pyx_DECREF(__pyx_v_self->args);
   __pyx_v_self->args = __pyx_v_args;
 
-  /* "simulator.pyx":53
+  /* "simulator.pyx":54
  *         assert len(set(args)) == len(args)
  *         self.args = args
  *         self._state = State()             # <<<<<<<<<<<<<<
  *         self._state.setup(_list2stks(self.args))
  * 
  */
-  __pyx_t_1 = __Pyx_PyObject_CallNoArg(((PyObject *)__pyx_ptype_9simulator_State)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 53, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_CallNoArg(((PyObject *)__pyx_ptype_9simulator_State)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 54, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_GIVEREF(__pyx_t_1);
   __Pyx_GOTREF(__pyx_v_self->_state);
@@ -2254,7 +2261,7 @@ static int __pyx_pf_9simulator_8PushSwap___cinit__(struct __pyx_obj_9simulator_P
   __pyx_v_self->_state = ((struct __pyx_obj_9simulator_State *)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "simulator.pyx":54
+  /* "simulator.pyx":55
  *         self.args = args
  *         self._state = State()
  *         self._state.setup(_list2stks(self.args))             # <<<<<<<<<<<<<<
@@ -2263,12 +2270,12 @@ static int __pyx_pf_9simulator_8PushSwap___cinit__(struct __pyx_obj_9simulator_P
  */
   __pyx_t_1 = __pyx_v_self->args;
   __Pyx_INCREF(__pyx_t_1);
-  __pyx_t_4 = ((struct __pyx_vtabstruct_9simulator_State *)__pyx_v_self->_state->__pyx_vtab)->setup(__pyx_v_self->_state, __pyx_f_9simulator__list2stks(((PyObject*)__pyx_t_1))); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 54, __pyx_L1_error)
+  __pyx_t_4 = ((struct __pyx_vtabstruct_9simulator_State *)__pyx_v_self->_state->__pyx_vtab)->setup(__pyx_v_self->_state, __pyx_f_9simulator__list2stks(((PyObject*)__pyx_t_1))); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 55, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-  /* "simulator.pyx":50
+  /* "simulator.pyx":51
  *         list args
  * 
  *     def __cinit__(self, list args):             # <<<<<<<<<<<<<<
@@ -2289,7 +2296,7 @@ static int __pyx_pf_9simulator_8PushSwap___cinit__(struct __pyx_obj_9simulator_P
   return __pyx_r;
 }
 
-/* "simulator.pyx":56
+/* "simulator.pyx":57
  *         self._state.setup(_list2stks(self.args))
  * 
  *     def __dealloc__(self):             # <<<<<<<<<<<<<<
@@ -2316,7 +2323,7 @@ static void __pyx_pf_9simulator_8PushSwap_2__dealloc__(CYTHON_UNUSED struct __py
   __Pyx_RefNannyFinishContext();
 }
 
-/* "simulator.pyx":59
+/* "simulator.pyx":60
  *         pass
  * 
  *     cpdef reset(self):             # <<<<<<<<<<<<<<
@@ -2345,7 +2352,7 @@ static PyObject *__pyx_f_9simulator_8PushSwap_reset(struct __pyx_obj_9simulator_
     if (unlikely(!__Pyx_object_dict_version_matches(((PyObject *)__pyx_v_self), __pyx_tp_dict_version, __pyx_obj_dict_version))) {
       PY_UINT64_T __pyx_type_dict_guard = __Pyx_get_tp_dict_version(((PyObject *)__pyx_v_self));
       #endif
-      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_reset); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 59, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_reset); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 60, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       if (!PyCFunction_Check(__pyx_t_1) || (PyCFunction_GET_FUNCTION(__pyx_t_1) != (PyCFunction)(void*)__pyx_pw_9simulator_8PushSwap_5reset)) {
         __Pyx_XDECREF(__pyx_r);
@@ -2362,7 +2369,7 @@ static PyObject *__pyx_f_9simulator_8PushSwap_reset(struct __pyx_obj_9simulator_
         }
         __pyx_t_2 = (__pyx_t_4) ? __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_t_4) : __Pyx_PyObject_CallNoArg(__pyx_t_3);
         __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
-        if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 59, __pyx_L1_error)
+        if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 60, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_2);
         __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
         __pyx_r = __pyx_t_2;
@@ -2383,25 +2390,25 @@ static PyObject *__pyx_f_9simulator_8PushSwap_reset(struct __pyx_obj_9simulator_
     #endif
   }
 
-  /* "simulator.pyx":60
+  /* "simulator.pyx":61
  * 
  *     cpdef reset(self):
  *         self._state.free()             # <<<<<<<<<<<<<<
  *         self._state = State()
  *         self._state.setup(_list2stks(self.args))
  */
-  __pyx_t_1 = ((struct __pyx_vtabstruct_9simulator_State *)__pyx_v_self->_state->__pyx_vtab)->free(__pyx_v_self->_state); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 60, __pyx_L1_error)
+  __pyx_t_1 = ((struct __pyx_vtabstruct_9simulator_State *)__pyx_v_self->_state->__pyx_vtab)->free(__pyx_v_self->_state); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 61, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "simulator.pyx":61
+  /* "simulator.pyx":62
  *     cpdef reset(self):
  *         self._state.free()
  *         self._state = State()             # <<<<<<<<<<<<<<
  *         self._state.setup(_list2stks(self.args))
- * 
+ *         return self._state
  */
-  __pyx_t_1 = __Pyx_PyObject_CallNoArg(((PyObject *)__pyx_ptype_9simulator_State)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 61, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_CallNoArg(((PyObject *)__pyx_ptype_9simulator_State)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 62, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_GIVEREF(__pyx_t_1);
   __Pyx_GOTREF(__pyx_v_self->_state);
@@ -2409,21 +2416,33 @@ static PyObject *__pyx_f_9simulator_8PushSwap_reset(struct __pyx_obj_9simulator_
   __pyx_v_self->_state = ((struct __pyx_obj_9simulator_State *)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "simulator.pyx":62
+  /* "simulator.pyx":63
  *         self._state.free()
  *         self._state = State()
  *         self._state.setup(_list2stks(self.args))             # <<<<<<<<<<<<<<
+ *         return self._state
  * 
- *     cpdef step(self, action):
  */
   __pyx_t_1 = __pyx_v_self->args;
   __Pyx_INCREF(__pyx_t_1);
-  __pyx_t_2 = ((struct __pyx_vtabstruct_9simulator_State *)__pyx_v_self->_state->__pyx_vtab)->setup(__pyx_v_self->_state, __pyx_f_9simulator__list2stks(((PyObject*)__pyx_t_1))); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 62, __pyx_L1_error)
+  __pyx_t_2 = ((struct __pyx_vtabstruct_9simulator_State *)__pyx_v_self->_state->__pyx_vtab)->setup(__pyx_v_self->_state, __pyx_f_9simulator__list2stks(((PyObject*)__pyx_t_1))); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 63, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "simulator.pyx":59
+  /* "simulator.pyx":64
+ *         self._state = State()
+ *         self._state.setup(_list2stks(self.args))
+ *         return self._state             # <<<<<<<<<<<<<<
+ * 
+ *     cpdef step(self, action):
+ */
+  __Pyx_XDECREF(__pyx_r);
+  __Pyx_INCREF(((PyObject *)__pyx_v_self->_state));
+  __pyx_r = ((PyObject *)__pyx_v_self->_state);
+  goto __pyx_L0;
+
+  /* "simulator.pyx":60
  *         pass
  * 
  *     cpdef reset(self):             # <<<<<<<<<<<<<<
@@ -2432,8 +2451,6 @@ static PyObject *__pyx_f_9simulator_8PushSwap_reset(struct __pyx_obj_9simulator_
  */
 
   /* function exit code */
-  __pyx_r = Py_None; __Pyx_INCREF(Py_None);
-  goto __pyx_L0;
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_1);
   __Pyx_XDECREF(__pyx_t_2);
@@ -2469,7 +2486,7 @@ static PyObject *__pyx_pf_9simulator_8PushSwap_4reset(struct __pyx_obj_9simulato
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("reset", 0);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __pyx_f_9simulator_8PushSwap_reset(__pyx_v_self, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 59, __pyx_L1_error)
+  __pyx_t_1 = __pyx_f_9simulator_8PushSwap_reset(__pyx_v_self, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 60, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
@@ -2486,8 +2503,8 @@ static PyObject *__pyx_pf_9simulator_8PushSwap_4reset(struct __pyx_obj_9simulato
   return __pyx_r;
 }
 
-/* "simulator.pyx":64
- *         self._state.setup(_list2stks(self.args))
+/* "simulator.pyx":66
+ *         return self._state
  * 
  *     cpdef step(self, action):             # <<<<<<<<<<<<<<
  *         cdef:
@@ -2523,7 +2540,7 @@ static PyObject *__pyx_f_9simulator_8PushSwap_step(struct __pyx_obj_9simulator_P
     if (unlikely(!__Pyx_object_dict_version_matches(((PyObject *)__pyx_v_self), __pyx_tp_dict_version, __pyx_obj_dict_version))) {
       PY_UINT64_T __pyx_type_dict_guard = __Pyx_get_tp_dict_version(((PyObject *)__pyx_v_self));
       #endif
-      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_step); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 64, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_step); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 66, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       if (!PyCFunction_Check(__pyx_t_1) || (PyCFunction_GET_FUNCTION(__pyx_t_1) != (PyCFunction)(void*)__pyx_pw_9simulator_8PushSwap_7step)) {
         __Pyx_XDECREF(__pyx_r);
@@ -2540,7 +2557,7 @@ static PyObject *__pyx_f_9simulator_8PushSwap_step(struct __pyx_obj_9simulator_P
         }
         __pyx_t_2 = (__pyx_t_4) ? __Pyx_PyObject_Call2Args(__pyx_t_3, __pyx_t_4, __pyx_v_action) : __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_v_action);
         __Pyx_XDECREF(__pyx_t_4); __pyx_t_4 = 0;
-        if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 64, __pyx_L1_error)
+        if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 66, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_2);
         __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
         __pyx_r = __pyx_t_2;
@@ -2561,14 +2578,14 @@ static PyObject *__pyx_f_9simulator_8PushSwap_step(struct __pyx_obj_9simulator_P
     #endif
   }
 
-  /* "simulator.pyx":71
+  /* "simulator.pyx":73
  *             char *_action
  * 
  *         action = action.encode('UTF-8')             # <<<<<<<<<<<<<<
  *         _action = action
  *         self._state.step(_action)
  */
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_action, __pyx_n_s_encode); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 71, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_action, __pyx_n_s_encode); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 73, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_t_3 = NULL;
   if (CYTHON_UNPACK_METHODS && likely(PyMethod_Check(__pyx_t_2))) {
@@ -2582,60 +2599,60 @@ static PyObject *__pyx_f_9simulator_8PushSwap_step(struct __pyx_obj_9simulator_P
   }
   __pyx_t_1 = (__pyx_t_3) ? __Pyx_PyObject_Call2Args(__pyx_t_2, __pyx_t_3, __pyx_kp_s_UTF_8) : __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_kp_s_UTF_8);
   __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
-  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 71, __pyx_L1_error)
+  if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 73, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF_SET(__pyx_v_action, __pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "simulator.pyx":72
+  /* "simulator.pyx":74
  * 
  *         action = action.encode('UTF-8')
  *         _action = action             # <<<<<<<<<<<<<<
  *         self._state.step(_action)
  *         state = self._state.clone()
  */
-  __pyx_t_5 = __Pyx_PyObject_AsWritableString(__pyx_v_action); if (unlikely((!__pyx_t_5) && PyErr_Occurred())) __PYX_ERR(0, 72, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyObject_AsWritableString(__pyx_v_action); if (unlikely((!__pyx_t_5) && PyErr_Occurred())) __PYX_ERR(0, 74, __pyx_L1_error)
   __pyx_v__action = __pyx_t_5;
 
-  /* "simulator.pyx":73
+  /* "simulator.pyx":75
  *         action = action.encode('UTF-8')
  *         _action = action
  *         self._state.step(_action)             # <<<<<<<<<<<<<<
  *         state = self._state.clone()
  *         is_done = self._state.is_done()
  */
-  __pyx_t_1 = ((struct __pyx_vtabstruct_9simulator_State *)__pyx_v_self->_state->__pyx_vtab)->step(__pyx_v_self->_state, __pyx_v__action); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 73, __pyx_L1_error)
+  __pyx_t_1 = ((struct __pyx_vtabstruct_9simulator_State *)__pyx_v_self->_state->__pyx_vtab)->step(__pyx_v_self->_state, __pyx_v__action); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 75, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "simulator.pyx":74
+  /* "simulator.pyx":76
  *         _action = action
  *         self._state.step(_action)
  *         state = self._state.clone()             # <<<<<<<<<<<<<<
  *         is_done = self._state.is_done()
  *         reward = 0.0 if is_done else -1.0
  */
-  __pyx_t_1 = ((struct __pyx_vtabstruct_9simulator_State *)__pyx_v_self->_state->__pyx_vtab)->clone(__pyx_v_self->_state); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 74, __pyx_L1_error)
+  __pyx_t_1 = ((struct __pyx_vtabstruct_9simulator_State *)__pyx_v_self->_state->__pyx_vtab)->clone(__pyx_v_self->_state); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 76, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  if (!(likely(((__pyx_t_1) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_1, __pyx_ptype_9simulator_State))))) __PYX_ERR(0, 74, __pyx_L1_error)
+  if (!(likely(((__pyx_t_1) == Py_None) || likely(__Pyx_TypeTest(__pyx_t_1, __pyx_ptype_9simulator_State))))) __PYX_ERR(0, 76, __pyx_L1_error)
   __pyx_v_state = ((struct __pyx_obj_9simulator_State *)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "simulator.pyx":75
+  /* "simulator.pyx":77
  *         self._state.step(_action)
  *         state = self._state.clone()
  *         is_done = self._state.is_done()             # <<<<<<<<<<<<<<
  *         reward = 0.0 if is_done else -1.0
  *         return (state, reward, is_done)
  */
-  __pyx_t_1 = ((struct __pyx_vtabstruct_9simulator_State *)__pyx_v_self->_state->__pyx_vtab)->is_done(__pyx_v_self->_state); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 75, __pyx_L1_error)
+  __pyx_t_1 = ((struct __pyx_vtabstruct_9simulator_State *)__pyx_v_self->_state->__pyx_vtab)->is_done(__pyx_v_self->_state); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 77, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_6 = __Pyx_PyInt_As_int(__pyx_t_1); if (unlikely((__pyx_t_6 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 75, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_PyInt_As_int(__pyx_t_1); if (unlikely((__pyx_t_6 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 77, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_v_is_done = __pyx_t_6;
 
-  /* "simulator.pyx":76
+  /* "simulator.pyx":78
  *         state = self._state.clone()
  *         is_done = self._state.is_done()
  *         reward = 0.0 if is_done else -1.0             # <<<<<<<<<<<<<<
@@ -2648,17 +2665,17 @@ static PyObject *__pyx_f_9simulator_8PushSwap_step(struct __pyx_obj_9simulator_P
   }
   __pyx_v_reward = __pyx_t_7;
 
-  /* "simulator.pyx":77
+  /* "simulator.pyx":79
  *         is_done = self._state.is_done()
  *         reward = 0.0 if is_done else -1.0
  *         return (state, reward, is_done)             # <<<<<<<<<<<<<<
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = PyFloat_FromDouble(__pyx_v_reward); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 77, __pyx_L1_error)
+  __pyx_t_1 = PyFloat_FromDouble(__pyx_v_reward); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 79, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyInt_From_int(__pyx_v_is_done); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 77, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyInt_From_int(__pyx_v_is_done); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 79, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_3 = PyTuple_New(3); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 77, __pyx_L1_error)
+  __pyx_t_3 = PyTuple_New(3); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 79, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_INCREF(((PyObject *)__pyx_v_state));
   __Pyx_GIVEREF(((PyObject *)__pyx_v_state));
@@ -2673,8 +2690,8 @@ static PyObject *__pyx_f_9simulator_8PushSwap_step(struct __pyx_obj_9simulator_P
   __pyx_t_3 = 0;
   goto __pyx_L0;
 
-  /* "simulator.pyx":64
- *         self._state.setup(_list2stks(self.args))
+  /* "simulator.pyx":66
+ *         return self._state
  * 
  *     cpdef step(self, action):             # <<<<<<<<<<<<<<
  *         cdef:
@@ -2719,7 +2736,7 @@ static PyObject *__pyx_pf_9simulator_8PushSwap_6step(struct __pyx_obj_9simulator
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("step", 0);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __pyx_f_9simulator_8PushSwap_step(__pyx_v_self, __pyx_v_action, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 64, __pyx_L1_error)
+  __pyx_t_1 = __pyx_f_9simulator_8PushSwap_step(__pyx_v_self, __pyx_v_action, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 66, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
@@ -3165,6 +3182,7 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_cline_in_traceback, __pyx_k_cline_in_traceback, sizeof(__pyx_k_cline_in_traceback), 0, 0, 1, 1},
   {&__pyx_n_s_encode, __pyx_k_encode, sizeof(__pyx_k_encode), 0, 0, 1, 1},
   {&__pyx_n_s_getstate, __pyx_k_getstate, sizeof(__pyx_k_getstate), 0, 0, 1, 1},
+  {&__pyx_n_s_import, __pyx_k_import, sizeof(__pyx_k_import), 0, 0, 1, 1},
   {&__pyx_n_s_main, __pyx_k_main, sizeof(__pyx_k_main), 0, 0, 1, 1},
   {&__pyx_n_s_name, __pyx_k_name, sizeof(__pyx_k_name), 0, 0, 1, 1},
   {&__pyx_kp_s_no_default___reduce___due_to_non, __pyx_k_no_default___reduce___due_to_non, sizeof(__pyx_k_no_default___reduce___due_to_non), 0, 0, 1, 0},
@@ -3177,10 +3195,11 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_setstate_cython, __pyx_k_setstate_cython, sizeof(__pyx_k_setstate_cython), 0, 0, 1, 1},
   {&__pyx_n_s_step, __pyx_k_step, sizeof(__pyx_k_step), 0, 0, 1, 1},
   {&__pyx_n_s_test, __pyx_k_test, sizeof(__pyx_k_test), 0, 0, 1, 1},
+  {&__pyx_n_s_torch, __pyx_k_torch, sizeof(__pyx_k_torch), 0, 0, 1, 1},
   {0, 0, 0, 0, 0, 0, 0}
 };
 static CYTHON_SMALL_CODE int __Pyx_InitCachedBuiltins(void) {
-  __pyx_builtin_MemoryError = __Pyx_GetBuiltinName(__pyx_n_s_MemoryError); if (!__pyx_builtin_MemoryError) __PYX_ERR(0, 8, __pyx_L1_error)
+  __pyx_builtin_MemoryError = __Pyx_GetBuiltinName(__pyx_n_s_MemoryError); if (!__pyx_builtin_MemoryError) __PYX_ERR(0, 9, __pyx_L1_error)
   __pyx_builtin_TypeError = __Pyx_GetBuiltinName(__pyx_n_s_TypeError); if (!__pyx_builtin_TypeError) __PYX_ERR(1, 2, __pyx_L1_error)
   return 0;
   __pyx_L1_error:;
@@ -3191,14 +3210,14 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__Pyx_InitCachedConstants", 0);
 
-  /* "simulator.pyx":9
+  /* "simulator.pyx":10
  *     if stks == NULL:
  *         raise MemoryError()
  *     for num in args[::-1]:             # <<<<<<<<<<<<<<
  *         sim.stk_push(stks.stk_a, num)
  *     return stks
  */
-  __pyx_slice_ = PySlice_New(Py_None, Py_None, __pyx_int_neg_1); if (unlikely(!__pyx_slice_)) __PYX_ERR(0, 9, __pyx_L1_error)
+  __pyx_slice_ = PySlice_New(Py_None, Py_None, __pyx_int_neg_1); if (unlikely(!__pyx_slice_)) __PYX_ERR(0, 10, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_slice_);
   __Pyx_GIVEREF(__pyx_slice_);
 
@@ -3299,30 +3318,30 @@ static int __Pyx_modinit_type_init_code(void) {
   __pyx_vtable_9simulator_State.free = (PyObject *(*)(struct __pyx_obj_9simulator_State *))__pyx_f_9simulator_5State_free;
   __pyx_vtable_9simulator_State.is_done = (PyObject *(*)(struct __pyx_obj_9simulator_State *))__pyx_f_9simulator_5State_is_done;
   __pyx_vtable_9simulator_State.clone = (PyObject *(*)(struct __pyx_obj_9simulator_State *))__pyx_f_9simulator_5State_clone;
-  if (PyType_Ready(&__pyx_type_9simulator_State) < 0) __PYX_ERR(0, 13, __pyx_L1_error)
+  if (PyType_Ready(&__pyx_type_9simulator_State) < 0) __PYX_ERR(0, 14, __pyx_L1_error)
   #if PY_VERSION_HEX < 0x030800B1
   __pyx_type_9simulator_State.tp_print = 0;
   #endif
   if ((CYTHON_USE_TYPE_SLOTS && CYTHON_USE_PYTYPE_LOOKUP) && likely(!__pyx_type_9simulator_State.tp_dictoffset && __pyx_type_9simulator_State.tp_getattro == PyObject_GenericGetAttr)) {
     __pyx_type_9simulator_State.tp_getattro = __Pyx_PyObject_GenericGetAttr;
   }
-  if (__Pyx_SetVtable(__pyx_type_9simulator_State.tp_dict, __pyx_vtabptr_9simulator_State) < 0) __PYX_ERR(0, 13, __pyx_L1_error)
-  if (PyObject_SetAttr(__pyx_m, __pyx_n_s_State, (PyObject *)&__pyx_type_9simulator_State) < 0) __PYX_ERR(0, 13, __pyx_L1_error)
-  if (__Pyx_setup_reduce((PyObject*)&__pyx_type_9simulator_State) < 0) __PYX_ERR(0, 13, __pyx_L1_error)
+  if (__Pyx_SetVtable(__pyx_type_9simulator_State.tp_dict, __pyx_vtabptr_9simulator_State) < 0) __PYX_ERR(0, 14, __pyx_L1_error)
+  if (PyObject_SetAttr(__pyx_m, __pyx_n_s_State, (PyObject *)&__pyx_type_9simulator_State) < 0) __PYX_ERR(0, 14, __pyx_L1_error)
+  if (__Pyx_setup_reduce((PyObject*)&__pyx_type_9simulator_State) < 0) __PYX_ERR(0, 14, __pyx_L1_error)
   __pyx_ptype_9simulator_State = &__pyx_type_9simulator_State;
   __pyx_vtabptr_9simulator_PushSwap = &__pyx_vtable_9simulator_PushSwap;
   __pyx_vtable_9simulator_PushSwap.reset = (PyObject *(*)(struct __pyx_obj_9simulator_PushSwap *, int __pyx_skip_dispatch))__pyx_f_9simulator_8PushSwap_reset;
   __pyx_vtable_9simulator_PushSwap.step = (PyObject *(*)(struct __pyx_obj_9simulator_PushSwap *, PyObject *, int __pyx_skip_dispatch))__pyx_f_9simulator_8PushSwap_step;
-  if (PyType_Ready(&__pyx_type_9simulator_PushSwap) < 0) __PYX_ERR(0, 45, __pyx_L1_error)
+  if (PyType_Ready(&__pyx_type_9simulator_PushSwap) < 0) __PYX_ERR(0, 46, __pyx_L1_error)
   #if PY_VERSION_HEX < 0x030800B1
   __pyx_type_9simulator_PushSwap.tp_print = 0;
   #endif
   if ((CYTHON_USE_TYPE_SLOTS && CYTHON_USE_PYTYPE_LOOKUP) && likely(!__pyx_type_9simulator_PushSwap.tp_dictoffset && __pyx_type_9simulator_PushSwap.tp_getattro == PyObject_GenericGetAttr)) {
     __pyx_type_9simulator_PushSwap.tp_getattro = __Pyx_PyObject_GenericGetAttr;
   }
-  if (__Pyx_SetVtable(__pyx_type_9simulator_PushSwap.tp_dict, __pyx_vtabptr_9simulator_PushSwap) < 0) __PYX_ERR(0, 45, __pyx_L1_error)
-  if (PyObject_SetAttr(__pyx_m, __pyx_n_s_PushSwap, (PyObject *)&__pyx_type_9simulator_PushSwap) < 0) __PYX_ERR(0, 45, __pyx_L1_error)
-  if (__Pyx_setup_reduce((PyObject*)&__pyx_type_9simulator_PushSwap) < 0) __PYX_ERR(0, 45, __pyx_L1_error)
+  if (__Pyx_SetVtable(__pyx_type_9simulator_PushSwap.tp_dict, __pyx_vtabptr_9simulator_PushSwap) < 0) __PYX_ERR(0, 46, __pyx_L1_error)
+  if (PyObject_SetAttr(__pyx_m, __pyx_n_s_PushSwap, (PyObject *)&__pyx_type_9simulator_PushSwap) < 0) __PYX_ERR(0, 46, __pyx_L1_error)
+  if (__Pyx_setup_reduce((PyObject*)&__pyx_type_9simulator_PushSwap) < 0) __PYX_ERR(0, 46, __pyx_L1_error)
   __pyx_ptype_9simulator_PushSwap = &__pyx_type_9simulator_PushSwap;
   __Pyx_RefNannyFinishContext();
   return 0;
@@ -3556,9 +3575,20 @@ if (!__Pyx_RefNanny) {
   #endif
 
   /* "simulator.pyx":1
- * cimport simulator as sim             # <<<<<<<<<<<<<<
+ * import torch             # <<<<<<<<<<<<<<
+ * cimport simulator as sim
  * 
- * cdef sim.t_stacks* _list2stks(list args):
+ */
+  __pyx_t_1 = __Pyx_Import(__pyx_n_s_torch, 0, -1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_torch, __pyx_t_1) < 0) __PYX_ERR(0, 1, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+
+  /* "(tree fragment)":3
+ * def __reduce_cython__(self):
+ *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")
+ * def __setstate_cython__(self, __pyx_state):             # <<<<<<<<<<<<<<
+ *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")
  */
   __pyx_t_1 = __Pyx_PyDict_NewPresized(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
@@ -4706,6 +4736,71 @@ __PYX_GOOD:
     Py_XDECREF(setstate);
     Py_XDECREF(setstate_cython);
     return ret;
+}
+
+/* Import */
+static PyObject *__Pyx_Import(PyObject *name, PyObject *from_list, int level) {
+    PyObject *empty_list = 0;
+    PyObject *module = 0;
+    PyObject *global_dict = 0;
+    PyObject *empty_dict = 0;
+    PyObject *list;
+    #if PY_MAJOR_VERSION < 3
+    PyObject *py_import;
+    py_import = __Pyx_PyObject_GetAttrStr(__pyx_b, __pyx_n_s_import);
+    if (!py_import)
+        goto bad;
+    #endif
+    if (from_list)
+        list = from_list;
+    else {
+        empty_list = PyList_New(0);
+        if (!empty_list)
+            goto bad;
+        list = empty_list;
+    }
+    global_dict = PyModule_GetDict(__pyx_m);
+    if (!global_dict)
+        goto bad;
+    empty_dict = PyDict_New();
+    if (!empty_dict)
+        goto bad;
+    {
+        #if PY_MAJOR_VERSION >= 3
+        if (level == -1) {
+            if ((1) && (strchr(__Pyx_MODULE_NAME, '.'))) {
+                module = PyImport_ImportModuleLevelObject(
+                    name, global_dict, empty_dict, list, 1);
+                if (!module) {
+                    if (!PyErr_ExceptionMatches(PyExc_ImportError))
+                        goto bad;
+                    PyErr_Clear();
+                }
+            }
+            level = 0;
+        }
+        #endif
+        if (!module) {
+            #if PY_MAJOR_VERSION < 3
+            PyObject *py_level = PyInt_FromLong(level);
+            if (!py_level)
+                goto bad;
+            module = PyObject_CallFunctionObjArgs(py_import,
+                name, global_dict, empty_dict, list, py_level, (PyObject *)NULL);
+            Py_DECREF(py_level);
+            #else
+            module = PyImport_ImportModuleLevelObject(
+                name, global_dict, empty_dict, list, level);
+            #endif
+        }
+    }
+bad:
+    #if PY_MAJOR_VERSION < 3
+    Py_XDECREF(py_import);
+    #endif
+    Py_XDECREF(empty_list);
+    Py_XDECREF(empty_dict);
+    return module;
 }
 
 /* CLineInTraceback */
